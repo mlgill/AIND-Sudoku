@@ -3,11 +3,23 @@
 
 # Question 1 (Naked Twins)
 Q: How do we use constraint propagation to solve the naked twins problem?  
-A: *Student should provide answer here*
+A: The function `naked_twins` iterates through each group in unitlist and looks for two cells that contain exactly the same two possible assignments. These are naked twins. Once found, the two possible assignments are removed from all other cells within the same group. 
+
+The `naked_twins` function has been incorporated into the recursive search function which also reduces the puzzle and attempts to solve it.
 
 # Question 2 (Diagonal Sudoku)
 Q: How do we use constraint propagation to solve the diagonal sudoku problem?  
-A: *Student should provide answer here*
+A: A list of diagonal constraints were created using the following code:
+
+> ```diagonal_units = [[''.join(x) for x in list(zip(rows, cols))],
+                  [''.join(x) for x in list(zip(rows, cols[::-1]))]]```
+
+This code creates the following sets of constraints:
+
+> ```[['A1', 'B2', 'C3', 'D4', 'E5', 'F6', 'G7', 'H8', 'I9'],  
+      ['A9', 'B8', 'C7', 'D6', 'E5', 'F4', 'G3', 'H2', 'I1']]```
+      
+These constraints were then added to `unitlist`, which is the master list of constraints. The modular nature of the constraint setup code makes it easy to modify constraints for different situations.
 
 ### Install
 
